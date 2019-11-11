@@ -1,0 +1,45 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+button, input{
+    display:inline;
+    float:left;
+    margin:10px;
+}
+
+.sum{
+    display:block;
+}
+
+.summary,.keywords, .transcript{
+    display:block;
+    float:left;
+    margin:20px;
+    padding:10px;
+    background-color: aliceblue;
+    border-radius:5px;
+    width:95%;
+    border:none;
+}
+
+/* .transcript{
+    width: 30%;
+}
+
+.keywords{
+    width:30%;
+    /* float:right; */
+
+.inp{
+    background-color: aliceblue;
+    width:95%;
+    height:50px;
+    border:none;
+    resize:both;
+    display:block;
+    float:left;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
