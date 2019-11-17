@@ -1,9 +1,16 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
 button, input{
     display:inline;
     float:left;
+    margin:10px;
+}
+
+.upload{
+    background-color:rgb(114, 114, 114);
+    height:100px;
+    width:95%;
+    display:block;
+    float:left;
+    border-radius:5px;
     margin:10px;
 }
 

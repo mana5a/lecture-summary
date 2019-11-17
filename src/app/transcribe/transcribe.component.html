@@ -1,0 +1,47 @@
+<div class="notes">
+    <div>
+        <button type="submit" class="btn btn-success" (click)="generate()">Generate Notes</button>
+    </div>
+</div>
+
+
+ <br>        
+    
+    <div class="keywords" *ngIf="result">
+        <h5>Keywords in this lecture are:</h5>
+        
+        <div  *ngFor="let kw of result[1]">            
+            {{kw[0]}}
+            --
+            {{kw[1]}} times
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="summary" *ngIf="result">
+    <h5>Extractive Summary:</h5>
+    <div  *ngFor="let res of result[0]" class="summary">
+            <p *ngFor="let w of res[0]"> </p> 
+        <span style="color:red;">Keywords: {{ res[1]+' ' }} </span>
+        <input class="inp" type="text" *ngFor="let words of res[0].split()" [(ngModel)]="res[0]" [ngStyle]="{'color':res[1].indexOf(words)>-1?'red':'black'}">
+            {{words}}
+            <br>
+            <br>
+            Relevance metric:
+            {{res[2]}}
+            <br>
+            <br>
+            
+            {{res[0]}}
+            
+            
+            
+        </div>
+    </div>
+    
+        <div class="transcript" *ngIf="result">
+                <h5>Transcript generated from audio:</h5>
+                {{result[2]}}
+        </div>

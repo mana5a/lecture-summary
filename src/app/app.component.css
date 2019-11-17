@@ -1,0 +1,17 @@
+.navbar{
+    margin:0px !important;
+    background-color:rgb(80, 80, 80);
+}
+
+a{
+    color:white;
+}
+
+a:hover{
+    color:white;    
+}
+
+li a{
+    float:left;
+    height:20px;
+}

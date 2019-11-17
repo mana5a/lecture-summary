@@ -1,0 +1,28 @@
+
+.notes
+{
+    background-color:rgb(114, 114, 114);
+    height:100px;
+    width:95%;
+    display:block;
+    float:left;
+    border-radius:5px;
+    margin:10px;
+}
+
+button{
+    display:inline;
+    float:left;
+    margin:10px;
+}
+
+.summary,.keywords, .transcript{
+    display:block;
+    float:left;
+    margin:20px;
+    padding:10px;
+    background-color: aliceblue;
+    border-radius:5px;
+    width:95%;
+    border:none;
+}

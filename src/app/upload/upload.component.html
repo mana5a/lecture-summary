@@ -1,14 +1,14 @@
-<h1 style="margin:20px;">Lecture Notes generation</h1>
-<div>
+<div class="upload">
     <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()">      
       <div>
         <input type="file" name="file" class="btn" (change)="onFileSelect($event)" />
       </div>
-      <!-- <br> -->
+      
       <div>
         <button type="submit" class="btn btn-success">Upload & Generate summary</button>
       </div>
     </form>
+</div>
 
     <!-- <br> -->
     <!-- <button type="button" class="btn btn-info" (click)="generateSummary()">Generate Summary</button> -->
@@ -17,7 +17,7 @@
     
     
     
-    <div class="keywords" *ngIf="result">
+    <!-- <div class="keywords" *ngIf="result">
         <h5>Keywords in this lecture are:</h5>
         
         <div  *ngFor="let kw of result[1]">            
@@ -31,7 +31,7 @@
         <div class="summary" *ngIf="result">
         <h5>Extractive Summary:</h5>
         <div  *ngFor="let res of result[0]" class="summary">
-            <!-- <p *ngFor="let w of res[0]"> </p> -->
+             <p *ngFor="let w of res[0]"> </p> 
             <span style="color:red;">Keywords: {{ res[1]+' ' }} </span>
             <input class="inp" type="text" *ngFor="let words of res[0].split()" [(ngModel)]="res[0]" [ngStyle]="{'color':res[1].indexOf(words)>-1?'red':'black'}">
                 {{words}}
@@ -41,9 +41,9 @@
                 {{res[2]}}
                 <br>
                 <br>
-            <!-- </textarea> -->
-            <!-- {{res[0]}}
-            --- -->
+             </textarea> 
+             {{res[0]}}
+            
             
             
         </div>
@@ -53,4 +53,4 @@
                 <h5>Transcript generated from audio:</h5>
                 {{result[2]}}
             </div>
-</div>
+</div> -->
