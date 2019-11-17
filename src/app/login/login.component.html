@@ -1,0 +1,40 @@
+<div class="container">
+    <h1>Login Form</h1>
+    <form (ngSubmit)="clicked()" #loginForm="ngForm">
+        
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" 
+        required
+        [(ngModel)] = "model.username" name = "username"
+        #name = "ngModel">
+        <div [hidden]="name.valid || name.pristine"
+        class="alert alert-danger">
+            Username is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" class="form-control" id="password" 
+        required
+        [(ngModel)] = "model.password" name = "password"
+        #name = "ngModel">
+        <div [hidden]="name.valid || name.pristine"
+        class="alert alert-danger">
+            Password is required
+      </div>
+      </div>
+
+      <div class="form-group">
+        <label for="type">User Type</label>
+        <select class="form-control" id="type" 
+        required
+        [(ngModel)] = "model.type" name = "type">
+          <option *ngFor="let ty of type" [value]="ty">{{ty}}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Submit</button>
+    </form>
+</div>
