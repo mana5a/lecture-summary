@@ -1,0 +1,31 @@
+.card-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #383838;
+  }
+  
+  .card-content {
+    background-color: #4484ce;
+    color: #fff;
+    width: 30%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .card-content input, .card-content select, .card-content select *{
+    color: #383838;
+    font-size: 15px;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  .card-content *{
+    color: #ffffff;
+    font-size: 15px;
+    font-family: 'Ubuntu', sans-serif;
+  }

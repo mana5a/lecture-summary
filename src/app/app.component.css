@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu|Crimson+Text|Open+Sans|Noto+Sans+JP&display=swap');
+
+ul li a{
+    color: #ffffff;
+    font-family: 'Ubuntu', sans-serif;
+    /* font-weight: bold; */
+    font-size: 20px;
+}
+
+ul li a.active{
+    background-color: #383838;
+    font-size: 20px;
+}
+
+ul li a:hover{
+    background-color: #383838;
+    font-size: 20px;
+}
+
+.navwrapper{
+    background-color: #4484ce;
+}

@@ -12,6 +12,7 @@ cors = CORS(app)
 cors = CORS(app, resources = {r"/api/*":{"origins":"*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+# login route
 @app.route('/check', methods=['GET'])
 def check():
     uname = str(request.args.get('uname'))
@@ -19,7 +20,7 @@ def check():
     typ = str(request.args.get('type'))
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
     mydb = myclient["users"]
-    if typ == "student":
+    if typ == "Student":
         cursor = mydb.student.find({"username":uname})
     else:
         cursor = mydb.teacher.find({"username":uname})
@@ -32,6 +33,25 @@ def check():
             return jsonify("no")
     return jsonify("no")
 
+@app.route('/username_exists', methods= ['POST'])
+def username_exists():
+    model = json.loads(request.data)
+    print(model)
+    uname = str(model["username"])
+    myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+    mydb = myclient["users"]
+    if typ == "Student":
+        cursor = mydb.student.find({"username":uname})
+    else:
+        cursor = mydb.teacher.find({"username":uname})
+    data = list()
+    for i in cursor:
+        data.append(i)
+    if(len(data)>0):
+        return jsonify("True")
+    else:
+        return jsonify("False")
+
 @app.route('/add', methods = ['POST'])
 def add():
     model = json.loads(request.data)
@@ -42,7 +62,7 @@ def add():
     typ = str(model["type"])
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
     mydb = myclient["users"]
-    if typ == "student":
+    if typ == "Student":
         cursor = mydb.student.find({"username":uname})
     else:
         cursor = mydb.teacher.find({"username":uname})
@@ -52,7 +72,7 @@ def add():
     if(len(data)>0):
         return jsonify("username exists")
     else:
-        if typ == "student":
+        if typ == "Student":
             cursor = mydb.student.insert({"username":uname, "password":passw, "name":name})
         else:
             cursor = mydb.teacher.find({"username":uname, "password":passw, "name":name})

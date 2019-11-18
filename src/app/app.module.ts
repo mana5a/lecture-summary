@@ -9,9 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './alert/alert.component';
 import { RegisterComponent } from './register/register.component';
 const appRoutes: Routes = [
-  {path:'notnewuser', component: LoginComponent},
-  {path:'newuser', component: RegisterComponent},
-  { path: '',   redirectTo: '/notnewuser', pathMatch: 'full' },
+  {path:'login', component: LoginComponent},
+  {path:'register', component: RegisterComponent},
+  {path: '',   redirectTo: '/login', pathMatch: 'full'},
 
 
 ];

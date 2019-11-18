@@ -9,10 +9,12 @@ import { RouterModule } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent {
   result:any
-  SERVER_URL = "http://localhost:5000/add";
-  type = ['student','teacher'];
+  SERVER_URL_ADD = "http://localhost:5000/add";
+  SERVER_URL_CHECK_USERNAME_EXISTS = "http://localhost:5000/username_exists";
+  type = ['Student','Teacher'];
   model = new User('','', '', this.type[0]);
   registerForm: FormGroup;
   constructor(private httpClient: HttpClient) {}
@@ -22,7 +24,7 @@ export class RegisterComponent {
     console.log("what");
 
     console.log("hello", this.model.name, this.model.username, this.model.password, this.model.type);
-   this.httpClient.post<any>(this.SERVER_URL,this.model).subscribe(
+    this.httpClient.post<any>(this.SERVER_URL_ADD,this.model).subscribe(
       (res) =>
       {
         console.log(res);
@@ -35,4 +37,22 @@ export class RegisterComponent {
       },
       (err) => console.log(err)
     );
-  }}
+  }
+  isUsernameTaken(): boolean {
+    var username = this.model.username;
+    var ret=false;
+    this.httpClient.post<any>(this.SERVER_URL_CHECK_USERNAME_EXISTS,username).subscribe(
+      (res) =>
+      {
+        if(res=="True")
+          ret=true;
+      },
+      (err) => 
+      {
+        console.log(err)
+      }
+    );
+    return ret;
+  }
+
+}

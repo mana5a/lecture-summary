@@ -1,6 +1,7 @@
-<nav>
-    <a routerLink = "/notnewuser" routerLinkActive="active">Login</a> <br/>
-    <a routerLink = "/newuser" routerLinkActive="active">Sign Up</a> 
-
-</nav>
+<div class="d-flex justify-content-center navwrapper">
+<ul class="nav nav-tabs">
+    <li><a data-toggle="tab" routerLink="/login" routerLinkActive="active">Login</a></li>
+    <li><a data-toggle="tab" routerLink="/register" routerLinkActive="active">Register</a></li>
+</ul>
+</div>
 <router-outlet></router-outlet>
