@@ -1,32 +1,42 @@
-<div class="card-container">
-  <div class="card-content">
-      <form (ngSubmit)="clicked()" #loginForm="ngForm">   
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" 
-          required
-          [(ngModel)] = "model.username" name = "username"
-          #name = "ngModel">
-        </div>
+<div *ngIf="notTriedLoggingIn()">
+  <div class="card-container">
+    <div class="card-content">
+        <form (ngSubmit)="clicked()" #loginForm="ngForm">   
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" 
+            required
+            [(ngModel)] = "model.username" name = "username"
+            #name = "ngModel">
+          </div>
 
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="text" class="form-control" id="password" 
-          required
-          [(ngModel)] = "model.password" name = "password"
-          #name = "ngModel">
-        </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" class="form-control" id="password" 
+            required
+            [(ngModel)] = "model.password" name = "password"
+            #name = "ngModel">
+          </div>
 
-        <div class="form-group">
-          <label for="type">User Type</label>
-          <select class="form-control" id="type" 
-          required
-          [(ngModel)] = "model.type" name = "type">
-            <option *ngFor="let ty of type" [value]="ty">{{ty}}</option>
-          </select>
-        </div>
+          <div class="form-group">
+            <label for="type">User Type</label>
+            <select class="form-control" id="type" 
+            required
+            [(ngModel)] = "model.type" name = "type">
+              <option *ngFor="let ty of type" [value]="ty">{{ty}}</option>
+            </select>
+          </div>
 
-        <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Submit</button>
-      </form>
+          <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Submit</button>
+        </form>
+    </div>
   </div>
+</div>
+
+<div *ngIf="loginOkay()" class="message">
+Logged in successfully!
+</div>
+
+<div *ngIf="errorMessage()" class="message">
+Something went wrong, try again!
 </div>

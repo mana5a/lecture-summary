@@ -29,3 +29,11 @@
     font-size: 15px;
     font-family: 'Ubuntu', sans-serif;
   }
+
+  .icon{
+    position: absolute;
+    left:60.5%;
+    top:45%;
+    width: 3.5%;
+    /* height:50%; */
+  }

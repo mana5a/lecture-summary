@@ -23,6 +23,12 @@
     font-family: 'Ubuntu', sans-serif;
   }
 
+  .card-content input, .card-content select, .card-content select *{
+    color: #383838;
+    font-size: 15px;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
   .card-content *{
     color: #ffffff;
     font-size: 15px;

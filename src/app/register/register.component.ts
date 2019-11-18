@@ -11,7 +11,10 @@ import { RouterModule } from '@angular/router';
 })
 
 export class RegisterComponent {
-  result:any
+  result: any;
+  register_okay = false;
+  error_message = false;
+  username_okay=true;
   SERVER_URL_ADD = "http://localhost:5000/add";
   SERVER_URL_CHECK_USERNAME_EXISTS = "http://localhost:5000/username_exists";
   type = ['Student','Teacher'];
@@ -21,38 +24,71 @@ export class RegisterComponent {
   registered()
   {
     const formData = new FormData();
-    console.log("what");
-
-    console.log("hello", this.model.name, this.model.username, this.model.password, this.model.type);
     this.httpClient.post<any>(this.SERVER_URL_ADD,this.model).subscribe(
       (res) =>
       {
         console.log(res);
-        console.log('here');
         this.result = res;
-        if(res=="no")
+        if(res=="no"||res=="username exists")
+        {
+          this.register_okay = false;
+          this.error_message = true;
           console.log("fail");
+        }
         else
+        {
+          this.register_okay = true;
           console.log("login");
+        }
       },
       (err) => console.log(err)
     );
   }
-  isUsernameTaken(): boolean {
+  isUsernameOkay(): boolean {
+    if(this.username_okay==true)
+      return true;
+    else
+      return false;
+  }
+  isUsernameNotOkay(): boolean {
+    if(this.username_okay==true)
+      return false;
+    else
+      return true;
+  }
+  isUsernameTaken(e): any {
     var username = this.model.username;
-    var ret=false;
     this.httpClient.post<any>(this.SERVER_URL_CHECK_USERNAME_EXISTS,username).subscribe(
-      (res) =>
+    (res) =>
       {
         if(res=="True")
-          ret=true;
+        {
+          this.username_okay=false;
+        }
+        else
+        {
+          this.username_okay=true;
+        }
       },
       (err) => 
       {
         console.log(err)
       }
     );
-    return ret;
   }
-
+  notTriedRegistering(): boolean
+  {
+    if(this.register_okay==false&&this.error_message==false)
+      return true;
+    else
+      return false;
+  }
+  registerOkay(): boolean
+  {
+    return this.register_okay;
+  }
+  errorMessage(): boolean
+  {
+    return this.error_message;
+  }
 }

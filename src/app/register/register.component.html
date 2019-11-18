@@ -1,43 +1,56 @@
-<div class="card-container">
-  <div class="card-content">
-      <form (ngSubmit)="registered()" #registerForm="ngForm">           
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" 
-          required
-          [(ngModel)] = "model.name" name = "name"
-          #name = "ngModel">
-        </div>
+ <div *ngIf="notTriedRegistering()"> 
+  <div class="card-container">
+    <div class="card-content">
+        <form (ngSubmit)="registered()" #registerForm="ngForm">           
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" 
+            required
+            [(ngModel)] = "model.name" name = "name"
+            #name = "ngModel">
+          </div>
 
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" 
-          required
-          [(ngModel)] = "model.username" name = "username"
-          #name = "ngModel">
-        </div>
-        <span *ngIf="isUsernameTaken()">
-          Username already exists
-        </span>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" 
+            required
+            [(ngModel)] = "model.username" (ngModelChange) = "isUsernameTaken($event)" name = "username"
+            #name = "ngModel">
+            <span *ngIf="isUsernameOkay()">
+              <img class="icon" src="assets/tick.png"/>
+            </span>
+            <span *ngIf="isUsernameNotOkay()">
+              <img class="icon" src="assets/cross.png"/>
+            </span>
+          </div>
 
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="text" class="form-control" id="password" 
-          required
-          [(ngModel)] = "model.password" name = "password"
-          #name = "ngModel">
-        </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" class="form-control" id="password" 
+            required
+            [(ngModel)] = "model.password" name = "password"
+            #name = "ngModel">
+          </div>
 
-        <div class="form-group">
-          <label for="type">User Type</label>
-          <select class="form-control" id="type" 
-          required
-          [(ngModel)] = "model.type" name = "type">
-            <option *ngFor="let ty of type" [value]="ty">{{ty}}</option>
-          </select>
-        </div>
+          <div class="form-group">
+            <label for="type">User Type</label>
+            <select class="form-control" id="type" 
+            required
+            [(ngModel)] = "model.type" name = "type">
+              <option *ngFor="let ty of type" [value]="ty">{{ty}}</option>
+            </select>
+          </div>
 
-        <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid">Submit</button>
-      </form>
+          <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid">Submit</button>
+        </form>
+    </div>
   </div>
+</div>
+
+<div *ngIf="registerOkay()" class="message">
+  Successfully Registered!
+</div>
+
+<div *ngIf="errorMessage()" class="message">
+  Something went wrong, please try again!
 </div>

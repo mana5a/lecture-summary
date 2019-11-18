@@ -21,10 +21,12 @@ def check():
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
     mydb = myclient["users"]
     if typ == "Student":
+        print("student")
         cursor = mydb.student.find({"username":uname})
     else:
         cursor = mydb.teacher.find({"username":uname})
     for i in cursor:
+        print("1")
         pas = i['password']
         print(pas, passw)
         if pas==passw:
@@ -35,19 +37,19 @@ def check():
 
 @app.route('/username_exists', methods= ['POST'])
 def username_exists():
-    model = json.loads(request.data)
-    print(model)
-    uname = str(model["username"])
+    uname = request.data.decode(encoding="utf-8")
+    print(uname)
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
     mydb = myclient["users"]
-    if typ == "Student":
-        cursor = mydb.student.find({"username":uname})
-    else:
-        cursor = mydb.teacher.find({"username":uname})
+    cursor1 = mydb.student.find({"username":uname})
+    cursor2 = mydb.teacher.find({"username":uname})
     data = list()
-    for i in cursor:
+    for i in cursor1:
+        data.append(i)
+    for i in cursor2:
         data.append(i)
     if(len(data)>0):
+        print("FOUND OOPS")
         return jsonify("True")
     else:
         return jsonify("False")
