@@ -7,9 +7,8 @@ button, input{
 .upload{
     background-color:rgb(114, 114, 114);
     height:100px;
-    width:95%;
+    width:98%;
     display:block;
-    float:left;
     border-radius:5px;
     margin:10px;
 }

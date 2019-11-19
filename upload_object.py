@@ -1,7 +1,7 @@
 import os
 from google.cloud import storage
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'vaulted-scholar-254612-a0766eabcf5e.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'vaulted-scholar-254612-9bbd50992c2e.json'
 storage_client = storage.Client()
 
 def upload_blob(bucket_name, source_file_name, destination_blob_name):

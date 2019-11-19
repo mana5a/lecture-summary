@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { TranscribeComponent } from './transcribe/transcribe.component';
+import {ProgressBarModule} from "angular-progress-bar";
+import { ProgressComponent } from './progress/progress.component'
 
 
 
@@ -14,13 +16,15 @@ import { TranscribeComponent } from './transcribe/transcribe.component';
   declarations: [
     AppComponent,
     UploadComponent,
-    TranscribeComponent
+    TranscribeComponent,
+    ProgressComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

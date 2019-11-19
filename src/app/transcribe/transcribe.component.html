@@ -21,6 +21,20 @@
     <br>
 
     <div class="summary" *ngIf="result">
+        <h5>Extractive Summary:</h5>
+        <div *ngFor="let res of result[0]">
+            {{res[0]}}
+            {{res[1]}}
+            Relevance Metric: {{res[2]}}
+        </div>
+        <br>
+    </div>
+
+    <div class="transcript" *ngIf="result">
+        <h5>Transcript generated from audio:</h5>
+        {{result[2]}}
+    </div>
+    <!-- <div class="summary" *ngIf="result">
     <h5>Extractive Summary:</h5>
     <div  *ngFor="let res of result[0]" class="summary">
             <p *ngFor="let w of res[0]"> </p> 
@@ -29,19 +43,19 @@
             {{words}}
             <br>
             <br>
-            Relevance metric:
+             Relevance metric:
             {{res[2]}}
             <br>
             <br>
             
-            {{res[0]}}
+            {{res[0]}} 
             
             
             
         </div>
-    </div>
+    </div> -->
     
-        <div class="transcript" *ngIf="result">
-                <h5>Transcript generated from audio:</h5>
-                {{result[2]}}
-        </div>
+    <!-- <div class="transcript" *ngIf="result">
+            <h5>Transcript generated from audio:</h5>
+            {{result}}
+    </div> -->
